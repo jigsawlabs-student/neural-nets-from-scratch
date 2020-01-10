@@ -1,0 +1,9 @@
+This metric of sum of squared errors is an example of a loss function.  
+
+**Loss Function**
+
+> A **loss function** is a positive number sums an error metric (here squared differences).  
+
+The canonical machine learning problem 
+
+> The **canonical machine learning problem** is to produce a hypothesis function such that it minimizes our loss function.

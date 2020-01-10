@@ -1,0 +1,7 @@
+Now just like we had standard symbols to represent our components of linear regression (y = mx + b), we also have symbols to represent the formula above. Here they are: 
+
+* $y^{(i)}$ represent our actual, or observed target variables
+* $\hat{y^{(i)}}$ (pronounced y hat) represents our predicted output 
+* $\epsilon$ (epsilon) represents error
+
+Perhaps can remove this section from the lesson
