@@ -9,8 +9,8 @@ def sum_of_squared_errors(paired_data, w_1, w_2):
     return sum([(target - sigma(f(feature, w_1, w_2)))**2 for (feature, target) in paired_data])
 
 import pandas as pd
-df = pd.read_csv('./cell_data.csv', index_col = 0)
-areas = df['mean area'].tolist()
+df = pd.read_csv('./cell_data.csv')
+areas = df['mean_area'].tolist()
 targets = df['is_cancerous'].tolist()
 
 scaled_areas = [area/1000 for area in areas]
@@ -37,23 +37,22 @@ y_vals = df.iloc[1, :]
 z_vals =[sum_of_squared_errors(paired_data, w_1, w_2) for (w_1, w_2) in list(zip(x_vals, y_vals))]
 
 import plotly.graph_objects as go
-# x values, -2 -> +2
-# y_values -2 -> 2
 fig = go.Figure(data=[
     go.Mesh3d(
         x=x_vals,
         y=y_vals,
         z=z_vals,
-        colorbar_title='z',
+        colorbar_title='cost curve',
         colorscale=[[0, 'gold'],
                     [0.5, 'mediumturquoise'],
                     [1, 'magenta']],
-        # Intensity of each vertex, which will be interpolated and color-coded
         intensity=[0, 0.33, 0.66, 1],
-        # i, j and k give the vertices of triangles
-        # here we represent the 4 triangles of the tetrahedron surface
         name='y',
         showscale=True
     )
 ])
 
+fig.update_layout(scene = dict(
+                    xaxis_title='w1',
+                    yaxis_title='b',
+                    zaxis_title='SSE'))
